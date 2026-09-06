@@ -2,7 +2,6 @@ import { Layers, Mail, CheckSquare, PlayCircle, ArrowRight, Gift } from "lucide-
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/config/site";
 import { AffiliateButton } from "@/components/ui/affiliate-button";
-import { AffiliateDisclosureBadge } from "@/components/ui/affiliate-disclosure-badge";
 
 export function LaunchKit() {
   const iconMap: Record<string, typeof Layers> = {
@@ -82,10 +81,6 @@ export function LaunchKit() {
               Start Free & Get the Launch Kit
               <ArrowRight className="ml-2 size-4" />
             </AffiliateButton>
-          </div>
-
-          <div className="pt-2">
-            <AffiliateDisclosureBadge />
           </div>
         </div>
       </div>

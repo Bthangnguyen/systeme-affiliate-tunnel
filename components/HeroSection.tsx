@@ -6,7 +6,6 @@ import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AffiliateButton } from "@/components/ui/affiliate-button";
-import { AffiliateDisclosureBadge } from "@/components/ui/affiliate-disclosure-badge";
 
 export function HeroSection() {
   const FADE_DOWN = {
@@ -188,11 +187,6 @@ export function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* FTC Disclosure beneath visual */}
-          <div className="mt-4 text-center">
-            <AffiliateDisclosureBadge />
           </div>
         </motion.div>
       </div>

@@ -24,7 +24,6 @@ import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AffiliateButton } from "@/components/ui/affiliate-button";
-import { AffiliateDisclosureBadge } from "@/components/ui/affiliate-disclosure-badge";
 import { siteConfig } from "@/config/site";
 
 export default function GuidePage() {
@@ -47,14 +46,13 @@ export default function GuidePage() {
       <main className="flex-1 py-10 md:py-16 bg-background">
         <div className="container mx-auto max-w-6xl px-4 md:px-6">
           {/* Top Bar Navigation */}
-          <div className="flex items-center justify-between gap-4 mb-8">
+          <div className="flex items-center justify-start gap-4 mb-8">
             <Button asChild variant="ghost" size="sm" className="gap-1.5 -ml-2 text-muted-foreground hover:text-foreground">
               <Link href="/">
                 <ArrowLeft className="size-4" />
                 Back to Home
               </Link>
             </Button>
-            <AffiliateDisclosureBadge />
           </div>
 
           {/* Guide Header Banner */}

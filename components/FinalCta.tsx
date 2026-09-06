@@ -1,6 +1,5 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { AffiliateButton } from "@/components/ui/affiliate-button";
-import { AffiliateDisclosureBadge } from "@/components/ui/affiliate-disclosure-badge";
 
 export function FinalCta() {
   return (
@@ -34,10 +33,6 @@ export function FinalCta() {
             <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400" />
             Instant access to all core features
           </span>
-        </div>
-
-        <div className="pt-6">
-          <AffiliateDisclosureBadge />
         </div>
       </div>
     </section>

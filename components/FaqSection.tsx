@@ -7,7 +7,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { AffiliateDisclosureBadge } from "@/components/ui/affiliate-disclosure-badge";
 
 export function FaqSection() {
   const faqs = [
@@ -74,10 +73,6 @@ export function FaqSection() {
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
-
-        <div className="mt-8 text-center">
-          <AffiliateDisclosureBadge />
         </div>
       </div>
     </section>

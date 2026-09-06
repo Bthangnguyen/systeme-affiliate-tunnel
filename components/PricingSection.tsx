@@ -5,7 +5,6 @@ import { Check, ArrowRight, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/config/site";
 import { AffiliateButton } from "@/components/ui/affiliate-button";
-import { AffiliateDisclosureBadge } from "@/components/ui/affiliate-disclosure-badge";
 
 export function PricingSection() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
@@ -144,11 +143,6 @@ export function PricingSection() {
               </div>
             );
           })}
-        </div>
-
-        {/* Pricing Disclosure */}
-        <div className="mt-12 text-center">
-          <AffiliateDisclosureBadge />
         </div>
       </div>
     </section>

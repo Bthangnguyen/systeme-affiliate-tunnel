@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Layers } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,11 +11,8 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-start justify-between gap-8">
           {/* Brand Col */}
           <div className="space-y-3 max-w-sm">
-            <Link href="/" className="flex items-center gap-2 font-bold text-base text-foreground tracking-tight">
-              <div className="flex size-7 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-xs">
-                <Layers className="size-4" />
-              </div>
-              <span>{siteConfig.brand.name}</span>
+            <Link href="/" className="inline-block">
+              <BrandLogo />
             </Link>
             <p className="leading-relaxed text-muted-foreground">
               An independent educational resource dedicated to helping entrepreneurs simplify their online business stack and launch faster.
@@ -84,9 +81,8 @@ export function Footer() {
 
         {/* Legal Disclaimer & Copyright */}
         <div className="pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <p className="max-w-2xl text-muted-foreground/80 leading-relaxed">
-            <strong>FTC Disclaimer:</strong> {siteConfig.disclosures.short}{" "}
-            {siteConfig.disclosures.notOfficial}
+          <p className="max-w-3xl text-muted-foreground/80 leading-relaxed text-[11px]">
+            {siteConfig.disclosures.footerDisclaimer}
           </p>
           <div className="shrink-0 text-muted-foreground">
             &copy; {currentYear} {siteConfig.brand.name}. All rights reserved.

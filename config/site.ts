@@ -48,8 +48,8 @@ export const siteConfig = {
   },
   // Central Affiliate Configuration
   affiliate: {
-    // Replace with your actual Systeme.io affiliate ID (from your Affiliate Dashboard)
-    affiliateId: process.env.NEXT_PUBLIC_SYSTEME_AFFILIATE_ID || "YOUR_AFFILIATE_ID",
+    // Systeme.io live affiliate ID
+    affiliateId: process.env.NEXT_PUBLIC_SYSTEME_AFFILIATE_ID || "sa0280709543899e1c2a6538ad88d9dc5bbcfeccc8",
     systemeBaseUrl: "https://systeme.io",
     // Free plan registration URL
     registerUrl: "https://systeme.io",
@@ -59,10 +59,8 @@ export const siteConfig = {
   },
   // Legal & FTC Disclosures
   disclosures: {
-    short:
-      "Disclosure: We may earn a commission if you sign up or purchase through links on this site, at no additional cost to you. We are an independent review and educational resource and not an employee or official partner of Systeme.io.",
-    notOfficial:
-      "This is an independent educational resource and is not sponsored by, endorsed by, or affiliated with Systeme.io official branding.",
+    footerDisclaimer:
+      "FTC Disclaimer: Disclosure: We may earn a commission if you sign up or purchase through links on this site, at no additional cost to you. We are an independent review and educational resource and not an employee or official partner of Systeme.io. This is an independent educational resource and is not sponsored by, endorsed by, or affiliated with Systeme.io official branding.",
   },
   // Verified Pricing Baseline (September 2026)
   pricing: [

@@ -17,6 +17,7 @@ import {
 import { AffiliateButton } from "@/components/ui/affiliate-button";
 import { ModeToggle } from "@/components/mode-toggle";
 import { siteConfig } from "@/config/site";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -26,11 +27,8 @@ export function Header() {
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         {/* Brand Logo & Tag */}
         <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-2 font-semibold text-lg tracking-tight">
-            <div className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
-              <Layers className="size-5" />
-            </div>
-            <span className="font-bold">{siteConfig.brand.name}</span>
+          <Link href="/" className="flex items-center gap-2">
+            <BrandLogo />
           </Link>
           <span className="hidden sm:inline-flex items-center rounded-full bg-secondary/80 border border-border/50 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">
             Independent Guide

@@ -1,163 +1,155 @@
 "use client";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2 } from "lucide-react";
-import { motion } from "motion/react";
 
-interface PricingPlan {
-  name: string;
-  price: string;
-  period?: string;
-  description: string;
-  features: string[];
-  popular?: boolean;
-}
+import { useState } from "react";
+import { Check, ArrowRight, Sparkles } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { siteConfig } from "@/config/site";
+import { AffiliateButton } from "@/components/ui/affiliate-button";
+import { AffiliateDisclosureBadge } from "@/components/ui/affiliate-disclosure-badge";
 
 export function PricingSection() {
-  const plans: PricingPlan[] = [
-    {
-      name: "Basic",
-      price: "Free",
-      description: "Start your meditation journey",
-      features: [
-        "5 guided meditations",
-        "Basic sleep sounds",
-        "Breathing exercises",
-        "Mood tracking",
-      ],
-    },
-    {
-      name: "Premium",
-      price: "$9.99",
-      period: "per month",
-      description: "Unlock your full potential",
-      features: [
-        "Unlimited meditations",
-        "Full sleep story library",
-        "Advanced breathing techniques",
-        "Personalized recommendations",
-        "Offline access",
-      ],
-      popular: true,
-    },
-    {
-      name: "Family",
-      price: "$14.99",
-      period: "per month",
-      description: "Share mindfulness with loved ones",
-      features: [
-        "Everything in Premium",
-        "Up to 6 family members",
-        "Family progress tracking",
-        "Shared meditation goals",
-        "Kids content",
-        "Priority support",
-      ],
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
 
   return (
-    <section
-      id="pricing"
-      className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50"
-    >
-      <div className="container px-4 md:px-6">
-        <motion.div
-          className="flex flex-col items-center justify-center space-y-4 text-center"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={itemVariants}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="space-y-2">
-            <Badge variant="outline" className="px-3 py-1 rounded-full">
-              Pricing
-            </Badge>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Choose the plan that's right for your meditation journey.
-            </p>
-          </div>
-        </motion.div>
-        <motion.div
-          className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-3"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
-        >
-          {plans.map((plan, i) => (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col h-full"
+    <section id="pricing" className="w-full py-16 md:py-24 bg-background">
+      <div className="container mx-auto max-w-6xl px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
+          <Badge variant="outline" className="rounded-full px-3 py-1 text-xs">
+            Simple & Transparent Pricing
+          </Badge>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-foreground">
+            Start free. Upgrade when your business needs more.
+          </h2>
+          <p className="text-base sm:text-lg text-muted-foreground">
+            No forced trials. No credit card required to begin. 0% platform transaction fees on every plan.
+          </p>
+
+          {/* Billing Cycle Toggle */}
+          <div className="flex items-center justify-center gap-3 pt-4">
+            <span
+              className={`text-sm font-medium cursor-pointer ${
+                billingCycle === "monthly" ? "text-foreground" : "text-muted-foreground"
+              }`}
+              onClick={() => setBillingCycle("monthly")}
             >
-              <Card
-                className={`flex flex-col flex-1 border ${
-                  plan.popular ? "bg-background" : "bg-card"
+              Monthly billing
+            </span>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={billingCycle === "yearly"}
+              onClick={() => setBillingCycle(billingCycle === "monthly" ? "yearly" : "monthly")}
+              className="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden bg-primary"
+            >
+              <span
+                className={`pointer-events-none inline-block size-5 transform rounded-full bg-background shadow-lg ring-0 transition duration-200 ease-in-out ${
+                  billingCycle === "yearly" ? "translate-x-5" : "translate-x-0"
+                }`}
+              />
+            </button>
+            <span
+              className={`text-sm font-medium cursor-pointer inline-flex items-center gap-1.5 ${
+                billingCycle === "yearly" ? "text-foreground" : "text-muted-foreground"
+              }`}
+              onClick={() => setBillingCycle("yearly")}
+            >
+              Annual billing
+              <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                Save 30% (~2 months free)
+              </span>
+            </span>
+          </div>
+        </div>
+
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {siteConfig.pricing.map((plan) => {
+            const isFree = plan.id === "free";
+            const price = billingCycle === "monthly" ? plan.priceMonthly : Math.round(plan.priceYearly / 12);
+
+            return (
+              <div
+                key={plan.id}
+                className={`relative rounded-2xl border p-6 flex flex-col justify-between transition-all duration-200 ${
+                  isFree
+                    ? "border-primary shadow-md bg-card ring-1 ring-primary/30"
+                    : "border-border/70 bg-card/60 shadow-xs hover:border-border"
                 }`}
               >
-                <CardContent className="flex flex-1 flex-col p-6">
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-2xl font-medium">{plan.name}</h3>
-                      {plan.popular && (
-                        <Badge variant="secondary">Popular</Badge>
-                      )}
-                    </div>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold">{plan.price}</span>
-                      {plan.period && (
-                        <span className="text-muted-foreground">
-                          {plan.period}
+                {/* Plan Badge */}
+                {plan.badge && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="rounded-full bg-primary text-primary-foreground text-[11px] font-bold px-3 py-0.5 shadow-xs uppercase tracking-wider">
+                      {plan.badge}
+                    </span>
+                  </div>
+                )}
+
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
+                  </div>
+
+                  <p className="text-xs text-muted-foreground min-h-[32px] mb-4">
+                    {plan.description}
+                  </p>
+
+                  {/* Price Tag */}
+                  <div className="flex items-baseline gap-1 mb-6 pb-4 border-b border-border/50">
+                    <span className="text-4xl font-extrabold text-foreground font-mono">
+                      ${price}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      /month {billingCycle === "yearly" && !isFree ? "(billed annually)" : ""}
+                    </span>
+                  </div>
+
+                  {/* CTA Button */}
+                  <AffiliateButton
+                    section="pricing"
+                    ctaVariant={`pricing_${plan.id}_plan`}
+                    targetUrl={isFree ? siteConfig.affiliate.registerUrl : siteConfig.affiliate.pricingUrl}
+                    variant={isFree ? "default" : "outline"}
+                    className={`w-full rounded-full font-semibold mb-6 ${
+                      isFree ? "shadow-sm" : ""
+                    }`}
+                  >
+                    {plan.ctaText}
+                    <ArrowRight className="ml-1.5 size-3.5" />
+                  </AffiliateButton>
+
+                  {/* Features List */}
+                  <div className="space-y-2.5 text-xs text-muted-foreground">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-foreground block mb-2">
+                      Included Features:
+                    </span>
+                    {plan.features.map((feature, fIdx) => (
+                      <div key={fIdx} className="flex items-start gap-2">
+                        <Check className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                        <span className={isFree && fIdx < 4 ? "text-foreground font-medium" : ""}>
+                          {feature}
                         </span>
-                      )}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {plan.description}
-                    </p>
+                      </div>
+                    ))}
                   </div>
-                  <div className="mt-6 space-y-4">
-                    <ul className="space-y-2">
-                      {plan.features.map((feature, j) => (
-                        <li key={j} className="flex items-center gap-2">
-                          <CheckCircle2 className="h-4 w-4 text-primary" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button
-                      className="w-full rounded-full"
-                      variant={plan.popular ? "default" : "outline"}
-                    >
-                      Get Started
-                    </Button>
+                </div>
+
+                {isFree && (
+                  <div className="mt-6 pt-3 border-t border-border/40 text-center">
+                    <span className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+                      ✓ No credit card required
+                    </span>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Pricing Disclosure */}
+        <div className="mt-12 text-center">
+          <AffiliateDisclosureBadge />
+        </div>
       </div>
     </section>
   );

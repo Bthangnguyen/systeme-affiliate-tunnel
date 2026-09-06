@@ -26,11 +26,11 @@ export interface LaunchKitItem {
 
 export const siteConfig = {
   brand: {
-    name: "SoloLaunch",
-    legalName: "SoloLaunch Independent Review & Resources",
-    url: "https://sololaunch.link",
+    name: "TheSoloLaunch",
+    legalName: "TheSoloLaunch Independent Review & Resources",
+    url: "https://thesololaunch.space",
     ogImage: "/og.png",
-    supportEmail: "support@sololaunch.link",
+    supportEmail: "support@thesololaunch.space",
   },
   meta: {
     title: "Everything You Need to Launch Your Online Business | In One Place",

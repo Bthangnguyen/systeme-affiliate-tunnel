@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AffiliateButton } from "@/components/ui/affiliate-button";
-import { siteConfig } from "@/config/site";
+import { siteConfig, getAffiliateUrl } from "@/config/site";
 
 export default function GuidePage() {
   const [activeSection, setActiveSection] = useState("getting-started");
@@ -139,7 +139,7 @@ export default function GuidePage() {
                   <ol className="list-decimal pl-5 space-y-2 text-sm">
                     <li>
                       Visit the registration page via{" "}
-                      <Link href={siteConfig.affiliate.systemeBaseUrl} target="_blank" rel="noopener noreferrer" className="text-primary underline font-medium">
+                      <Link href={getAffiliateUrl()} target="_blank" rel="noopener noreferrer" className="text-primary underline font-medium">
                         Systeme.io
                       </Link>{" "}
                       and enter your primary business email address.
@@ -178,7 +178,7 @@ export default function GuidePage() {
                   <h3 className="text-sm font-bold text-foreground">Configuring DNS in 3 Steps:</h3>
                   <ol className="list-decimal pl-5 space-y-2 text-sm">
                     <li>
-                      Go to your profile avatar in the top right $\rightarrow$ <strong>Settings</strong> $\rightarrow$ <strong>Custom domains</strong>.
+                      Go to your profile avatar in the top right &rarr; <strong>Settings</strong> &rarr; <strong>Custom domains</strong>.
                     </li>
                     <li>
                       Click <strong>Add domain</strong> and enter a subdomain (e.g. <code>app.yourdomain.com</code> or <code>www.yourdomain.com</code>).
@@ -191,7 +191,7 @@ export default function GuidePage() {
                 <div className="rounded-lg bg-amber-500/10 border border-amber-500/20 p-4 text-xs sm:text-sm text-amber-800 dark:text-amber-300 flex items-start gap-2.5">
                   <AlertTriangle className="size-5 shrink-0 mt-0.5" />
                   <span>
-                    <strong>Email Authentication Notice:</strong> Under <strong>Settings $\rightarrow$ Mailing settings</strong>, also add the 3 DKIM CNAME records provided. This tells major inboxes (Google, Outlook) that your automated marketing emails are legitimate, keeping your messages out of the spam folder.
+                    <strong>Email Authentication Notice:</strong> Under <strong>Settings &rarr; Mailing settings</strong>, also add the 3 DKIM CNAME records provided. This tells major inboxes (Google, Outlook) that your automated marketing emails are legitimate, keeping your messages out of the spam folder.
                   </span>
                 </div>
               </section>
@@ -259,7 +259,7 @@ export default function GuidePage() {
                     <li>Create an interest tag like <code>Lead - Checklist</code> for new opt-ins.</li>
                     <li>Create a customer tag like <code>Buyer - Course XYZ</code> when someone purchases.</li>
                     <li>
-                      Under <strong>Emails $\rightarrow$ Campaigns</strong>, build automated drip sequences that send emails 24 hours, 48 hours, and 72 hours after signup.
+                      Under <strong>Emails &rarr; Campaigns</strong>, build automated drip sequences that send emails 24 hours, 48 hours, and 72 hours after signup.
                     </li>
                   </ul>
                 </div>
@@ -296,10 +296,10 @@ export default function GuidePage() {
                   6. Selling Digital Products & Accepting Payments
                 </h2>
                 <p>
-                  Under <strong>Products $\rightarrow$ Physical / Digital Products</strong>, you can upload downloadable files (PDFs, ZIPs) or create membership resources.
+                  Under <strong>Products &rarr; Physical / Digital Products</strong>, you can upload downloadable files (PDFs, ZIPs) or create membership resources.
                 </p>
                 <p className="text-sm">
-                  Connect your Stripe or PayPal account under <strong>Settings $\rightarrow$ Payment Gateways</strong>. Systeme.io charges <strong>0% platform fees</strong>, meaning you only pay standard merchant processing rates (typically 2.9% + $0.30) to Stripe or PayPal directly.
+                  Connect your Stripe or PayPal account under <strong>Settings &rarr; Payment Gateways</strong>. Systeme.io charges <strong>0% platform fees</strong>, meaning you only pay standard merchant processing rates (typically 2.9% + $0.30) to Stripe or PayPal directly.
                 </p>
               </section>
 
@@ -312,7 +312,7 @@ export default function GuidePage() {
                   7. Hosting Online Courses & Community Groups
                 </h2>
                 <p>
-                  Navigate to <strong>Products $\rightarrow$ Courses</strong> to construct a complete learning management curriculum.
+                  Navigate to <strong>Products &rarr; Courses</strong> to construct a complete learning management curriculum.
                 </p>
                 <div className="rounded-xl border border-border/70 bg-card p-5 space-y-2 text-sm">
                   <ul className="list-disc pl-5 space-y-1.5">
@@ -357,17 +357,19 @@ export default function GuidePage() {
                   <p className="text-sm text-muted-foreground max-w-md mx-auto">
                     Create your free account today and test the entire workflow with zero financial risk.
                   </p>
-                  <AffiliateButton
-                    section="guide"
-                    ctaVariant="guide_bottom_start_free"
-                    size="lg"
-                    className="rounded-full px-8 py-6 font-semibold shadow-sm"
-                  >
-                    Create Your Free Systeme.io Account
-                    <ArrowRight className="ml-2 size-4" />
-                  </AffiliateButton>
-                  <div className="text-[11px] text-muted-foreground">
-                    No credit card required • Free plan does not expire
+                  <div className="flex flex-col items-center justify-center gap-2.5 pt-2">
+                    <AffiliateButton
+                      section="guide"
+                      ctaVariant="guide_bottom_start_free"
+                      size="lg"
+                      className="rounded-full px-8 py-6 font-semibold shadow-sm text-base"
+                    >
+                      Create Your Free Systeme.io Account
+                      <ArrowRight className="ml-2 size-4" />
+                    </AffiliateButton>
+                    <div className="text-xs text-muted-foreground">
+                      No credit card required • Free plan does not expire
+                    </div>
                   </div>
                 </div>
               </section>

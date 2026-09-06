@@ -28,9 +28,9 @@ export const siteConfig = {
   brand: {
     name: "SoloLaunch",
     legalName: "SoloLaunch Independent Review & Resources",
-    url: "https://sololaunch.io",
+    url: "https://sololaunch.link",
     ogImage: "/og.png",
-    supportEmail: "support@sololaunch.io",
+    supportEmail: "support@sololaunch.link",
   },
   meta: {
     title: "Everything You Need to Launch Your Online Business | In One Place",
